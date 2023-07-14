@@ -1,11 +1,15 @@
 import { useState } from 'react'
+import Header from './components/Header/Header'
+import Router from './Router/Router'
+
 
 
 function App() {
 
   return (
     <>
-      
+      <Header />
+      <Router />
        
     </>
   )
