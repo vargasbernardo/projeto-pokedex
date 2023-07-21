@@ -1,5 +1,18 @@
-export default function PokemonListPage() {
+import PokemonCard from "../../components/PokemonCard/PokemonCard"
+import { PokemonList, PokemonListContainer, PokemonListTitle } from "./pokemonListPageStyle"
+
+export default function PokemonListPage({pokemons}) {
+    
     return (
-        <h1>Pokemon List Page</h1>
+        <PokemonList>
+            <PokemonListTitle>
+                <h1>Todos os Pokemons</h1>
+
+            </PokemonListTitle>
+            <PokemonListContainer>
+                <PokemonCard pokemons={pokemons}/>        
+            </PokemonListContainer>
+        
+        </PokemonList>
     )
 }
