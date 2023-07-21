@@ -4,12 +4,12 @@ import PokemonListPage from '../pages/PokemonListPage/PokemonListPage'
 import PokemonDetailPage from '../pages/PokemonDetailPage/PokemonDetailPage'
 
 
-export default function Router({pokemons}) {
+export default function Router({pokemons }) {
     
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<PokemonListPage pokemons={pokemons}/>}/>
+                <Route path="/" element={<PokemonListPage pokemons={pokemons} />}/>
                 <Route path="/pokedex" element={<PokedexPage />} />
                 <Route path="/pokemon" element={<PokemonDetailPage />} />
             </Routes>

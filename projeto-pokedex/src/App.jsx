@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Header from './components/Header/Header'
 import Router from './Router/Router'
+import BASE_URL from './constants/BASE_URL'
+import { GlobalStyles } from './GolbalStyles'
 
 
 
@@ -13,22 +15,31 @@ function App() {
       fetchPokemons()
 
   }, [])
+  
 
   const fetchPokemons = async () => {
     try {
-     const res = await axios.get('https://pokeapi.co/api/v2/pokemon/')
-     setPokemons(res.data.results)
+      const fetchedPokemons = []
+
+      for (let i = 1; i <= 20; i++) {
+        
+        const res = await axios.get(`${BASE_URL}/${i}`)
+        fetchedPokemons.push(res.data)
+
+      }
+      setPokemons(fetchedPokemons)
       
     } catch (error) {
-      alert(error.message)
+      console.log(error.message)
     }
 
   }
 
   return (
     <>
+      <GlobalStyles />
       <Header />
-      <Router pokemons={pokemons} />
+      <Router pokemons={pokemons}/>
        
     </>
   )

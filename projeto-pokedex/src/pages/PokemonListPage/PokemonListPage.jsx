@@ -1,17 +1,18 @@
 import PokemonCard from "../../components/PokemonCard/PokemonCard"
-import { PokemonListContainer } from "./pokemonListPageStyle"
+import { PokemonList, PokemonListContainer, PokemonListTitle } from "./pokemonListPageStyle"
 
 export default function PokemonListPage({pokemons}) {
-    console.log(pokemons)
     
     return (
-        <>
-            <h1>Pokemon List Page</h1>
+        <PokemonList>
+            <PokemonListTitle>
+                <h1>Todos os Pokemons</h1>
+
+            </PokemonListTitle>
             <PokemonListContainer>
                 <PokemonCard pokemons={pokemons}/>        
-
-
             </PokemonListContainer>
-        </>
+        
+        </PokemonList>
     )
 }

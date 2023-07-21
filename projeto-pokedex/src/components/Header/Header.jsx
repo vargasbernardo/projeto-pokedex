@@ -1,5 +1,14 @@
+import { HeaderContainer } from "./headerStyle";
+import pokemonLogo from '../../assets/images/pokemon-logo.png';
+
+
+
 export default function Header() {
     return (
-        <h1>This is a Header</h1>
+        <HeaderContainer>
+            <img src={pokemonLogo} />
+            <button>Pokedex</button>
+        
+        </HeaderContainer>
     )
 }
