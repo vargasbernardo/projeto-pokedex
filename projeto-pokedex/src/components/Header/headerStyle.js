@@ -23,14 +23,23 @@ export const HeaderContainer = styled.header`
 
 `
 export const PokedexButton = styled.button`
+    width: 200px;
+    height: 50px;
+    background-color: var(--button-background-color);
+    border: none;
+    border-radius: 8px;
+    color: var(--light-text-color);
+    cursor: pointer;
+        
+    a {
         grid-column: 3;
-        width: 200px;
-        height: 50px;
-        background-color: var(--button-background-color);
-        border: none;
-        border-radius: 8px;
+        text-decoration: none;
         color: var(--light-text-color);
-        cursor: pointer;
+        padding: 15px 70px;
+        /* border: 1px solid red; */
+           
+
+    }
 
 `
 export const DeleteButton = styled.button`

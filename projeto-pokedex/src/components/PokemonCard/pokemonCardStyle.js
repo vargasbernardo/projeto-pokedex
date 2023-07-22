@@ -18,7 +18,11 @@ export const PokemonCards = styled.div`
         /* align-items: center; */
 
     }
-    button {
+    a {
+        text-decoration: underline;
+    }
+`
+export const CaptureButton = styled.button`
         padding: 4px 10px;
         width: 146px;
         height: 38px;
@@ -30,10 +34,8 @@ export const PokemonCards = styled.div`
         margin-top: 10px;
         align-self: center;
         cursor: pointer;
-    }
-    a {
-        text-decoration: underline;
-    }
+        z-index: 2;
+
 `
 
 export const InfoContainer = styled.div`

@@ -1,4 +1,4 @@
-import { ImageContainer, InfoContainer, Pokeball, Pokemon, PokemonCards, TypesContainer} from './pokemonCardStyle'
+import { CaptureButton, ImageContainer, InfoContainer, Pokeball, Pokemon, PokemonCards, TypesContainer} from './pokemonCardStyle'
 import getLogo from '../../utils/typeLogo'
 import getTypeBackground from '../../utils/typeBackgroundColor';
 import getCardBackground from '../../utils/cardBackground';
@@ -10,7 +10,9 @@ import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter'
 
 export default function PokemonCard({pokemons}) {
     
-   
+   function handleClick() {
+         console.log('clicked')
+   }
       
       
 
@@ -36,7 +38,7 @@ export default function PokemonCard({pokemons}) {
                     </InfoContainer>
                     <ImageContainer>
                         <Pokemon src={pokemon.sprites.other['official-artwork'].front_default} />
-                        <button>Capturar!</button>
+                        <CaptureButton onClick={handleClick}>Capturar!</CaptureButton>
                     </ImageContainer>
                     <Pokeball src={pokeball}/>
             </PokemonCards>

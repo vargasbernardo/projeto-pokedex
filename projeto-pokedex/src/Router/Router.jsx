@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import PokedexPage from '../pages/PokedexPage/PokedexPAge'
+import PokedexPage from '../pages/PokedexPage/PokedexPage'
 import PokemonListPage from '../pages/PokemonListPage/PokemonListPage'
 import PokemonDetailPage from '../pages/PokemonDetailPage/PokemonDetailPage'
 

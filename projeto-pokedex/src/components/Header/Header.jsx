@@ -9,7 +9,7 @@ export default function Header({params}) {
         <HeaderContainer>
             {params ? <Link to="/">Todos os Pokemons</Link> : null}
             <img src={pokemonLogo} />
-            {params ? <DeleteButton>Excluir da Pokedex</DeleteButton> : <PokedexButton>Pokedex</PokedexButton>}
+            {params ? <DeleteButton>Excluir da Pokedex</DeleteButton> : <PokedexButton><Link to="/pokedex">Pokedex</Link></PokedexButton>}
         
         </HeaderContainer>
     )
