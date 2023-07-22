@@ -8,7 +8,9 @@ export const PokemonListContainer = styled.div`
     align-items: center;
     grid-row-gap: 60px;
     background-color: var(--dark-background-color);
-    
+    a {
+        color: var(--light-text-color);
+    }
 
 `
 

@@ -2,16 +2,15 @@ import { ImageContainer, InfoContainer, Pokeball, Pokemon, PokemonCards, TypesCo
 import getLogo from '../../utils/typeLogo'
 import getTypeBackground from '../../utils/typeBackgroundColor';
 import getCardBackground from '../../utils/cardBackground';
-import pokeball from '../../assets/svgs/pokeball.png'
+import pokeball from '../../assets/svgs/pokeball.png';
+import {Link} from 'react-router-dom';
+import addLeadingZero from '../../utils/addLeadingZero'
+import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter'
 
 
 export default function PokemonCard({pokemons}) {
-    function capitalizeFirstLetter(s) {
-        return s.charAt(0).toUpperCase() + s.slice(1);
-      }
-    function addLeadingZero(number) {
-        return number < 10 ? "0" + number : number.toString();
-      }
+    
+   
       
       
 
@@ -33,7 +32,7 @@ export default function PokemonCard({pokemons}) {
                                 })}
                             </TypesContainer>
                         </div>
-                        <a>Detalhes</a>
+                        <Link to={`/${pokemon.id}`}>Detalhes</Link>
                     </InfoContainer>
                     <ImageContainer>
                         <Pokemon src={pokemon.sprites.other['official-artwork'].front_default} />

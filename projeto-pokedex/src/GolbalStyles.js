@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
         --light-background-color: #ffffff;
         --dark-background-color: #5E5E5E;
         --button-background-color: #33A4F5;
+        --secondary-button-background-color: #FF6262;
 
     }
     * {
