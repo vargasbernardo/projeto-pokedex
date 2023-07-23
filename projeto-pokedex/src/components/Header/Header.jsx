@@ -1,16 +1,45 @@
 import { DeleteButton, HeaderContainer, PokedexButton } from "./headerStyle";
 import pokemonLogo from '../../assets/images/pokemon-logo.png';
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 
 
-export default function Header({params}) {
+const Header = ({ currentPage }) => {
+    const [showPokedexButton, setShowPokedexButton] = useState(true);
+  
+    const handlePokedexButtonClick = () => {
+      setShowPokedexButton(false);
+    };
+  
     return (
-        <HeaderContainer>
-            {params ? <Link to="/">Todos os Pokemons</Link> : null}
-            <img src={pokemonLogo} />
-            {params ? <DeleteButton>Excluir da Pokedex</DeleteButton> : <PokedexButton><Link to="/pokedex">Pokedex</Link></PokedexButton>}
+      <>
+        {currentPage === 'pokemonList' && showPokedexButton && (
+            <HeaderContainer>
+                <img src={pokemonLogo} alt="Pokemon Logo" />
+                <PokedexButton onClick={handlePokedexButtonClick}>
+                    <Link to="/pokedex">Pokedex</Link>
+                </PokedexButton>
+            </HeaderContainer>          
+        )}
+  
+        {currentPage === 'pokedex' && (
+            <HeaderContainer>
+                <Link to="/">Todos os Pokemons</Link>
+                <img src={pokemonLogo} alt="Pokemon Logo" />
+            </HeaderContainer>
+        )}
+  
+        {currentPage === 'details' && (
+          <HeaderContainer>
+            <Link to="/">Todos os Pokemons</Link>
+            <img src={pokemonLogo} alt="Pokemon Logo" />
+            <DeleteButton>Excluir da Pokedex</DeleteButton>
+          </HeaderContainer>
+        )}
         
-        </HeaderContainer>
-    )
-}
+      </>
+    );
+  };
+  
+  export default Header;

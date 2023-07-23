@@ -121,8 +121,9 @@ export const BackgroundPokeballTwo = styled.img`
 export const PokemonImage = styled.img`
     z-index: 1;
     align-self: start;
-    width: 270px;
-    height: 270px;
+    width: 400px;
+    height: 400px;
+    
 `
 
 export const EachBaseStat = styled.div`
