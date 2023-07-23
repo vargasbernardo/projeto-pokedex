@@ -68,5 +68,5 @@ export default function PokemonCard({
       </ImageContainer>
       <Pokeball src={pokeball} />
     </PokemonCards>
-  );
+  )
 }
