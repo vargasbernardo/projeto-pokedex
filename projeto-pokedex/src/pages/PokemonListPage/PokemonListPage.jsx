@@ -16,7 +16,7 @@ export default function PokemonListPage({pokemons, handleClick, pokedex}) {
             </PokemonListTitle>
             <PokemonListContainer>
                 {pokemons.map((pokemon, index) => {
-                    return <PokemonCard key={index} pokemon={pokemon} handleClick={handleClick} currentPage='pokemonList' setIsModalOpen={setIsModalOpen} />
+                    return <PokemonCard key={index} index={index} pokemon={pokemon} handleClick={handleClick} currentPage='pokemonList' setIsModalOpen={setIsModalOpen} />
                 })}     
             </PokemonListContainer>
                 {isModalOpen ? <Modal>

@@ -22,7 +22,7 @@ function App() {
     try {
       const fetchedPokemons = []
 
-      for (let i = 1; i <= 210; i++) {
+      for (let i = 1; i <= 151; i++) {
         
         const res = await axios.get(`${BASE_URL}/${i}`)
         fetchedPokemons.push(res.data)
@@ -36,14 +36,19 @@ function App() {
 
   }
 
-    function handleClick(id) {
-      addToPokedex(id)
+    function handleClick(id, index) {
+      addToPokedex(id, index)
   }
     
-  async function addToPokedex(id) {
+  async function addToPokedex(id, index) {
       try {
           const res = await axios.get(`${BASE_URL}/${id}`)
           setPokedex([...pokedex, res.data]);
+          setPokemons(prevPokemons => {
+            const newPokemons = [...prevPokemons];
+            newPokemons.splice(index, 1); // Remove the captured pokemon from the list
+            return newPokemons;
+          });
           localStorage.setItem('pokes', JSON.stringify([...pokedex, res.data]));
       } catch (error) {
           console.log(error);

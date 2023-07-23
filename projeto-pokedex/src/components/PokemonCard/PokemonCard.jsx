@@ -23,6 +23,7 @@ export default function PokemonCard({
   handleClick,
   currentPage,
   setIsModalOpen,
+  index
 }) {
   return (
     <PokemonCards
@@ -55,7 +56,7 @@ export default function PokemonCard({
         {currentPage === "pokemonList" ? (
           <CaptureButton
             onClick={() => {
-              handleClick(pokemon.id);
+              handleClick(pokemon.id, index);
               setIsModalOpen(true); //
             }}
           >
