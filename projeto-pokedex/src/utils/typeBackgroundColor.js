@@ -13,5 +13,27 @@ export default function getTypeBackground(type) {
         return '#AD61AE'
     } else if (type === 'water') {
         return '#33A4F5'
+    } else if (type === 'dragon') {
+        return '#0A6CBF'
+    } else if (type === 'dark') {
+        return '#5C5365'
+    } else if (type === 'electric') {
+        return '#F4D23B'
+    } else if (type === 'fairy') {
+        return '#EC8FE6'
+    } else if (type === 'fighting') {
+        return '#CE4069'
+    } else if (type === 'ghost') {
+        return '#5269AC'
+    } else if (type === 'ground') {
+        return '#D97745'
+    } else if (type === 'ice') {
+        return '#74CEC0'
+    } else if (type === 'psychic') {
+        return '#F67176'
+    } else if (type === 'rock') {
+        return '#C7B78B'
+    } else if (type === 'steel') {
+        return '#BBBBBB'
     }
 }

@@ -37,6 +37,22 @@ export const CaptureButton = styled.button`
         z-index: 2;
 
 `
+export const ExcludeButton = styled.button`
+        padding: 4px 10px;
+        width: 146px;
+        height: 38px;
+        background-color: #FF6262;
+        border-radius: 8px;
+        border: none;
+        color: var(--dark-text-color);
+        font-weight: bold;
+        margin-top: 10px;
+        align-self: center;
+        cursor: pointer;
+        z-index: 2;
+        color: var(--light-text-color);
+
+`
 
 export const InfoContainer = styled.div`
     display: flex;

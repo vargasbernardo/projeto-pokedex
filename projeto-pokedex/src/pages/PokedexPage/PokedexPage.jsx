@@ -1,19 +1,19 @@
-import { useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
-import { PokemonList, PokemonListContainer, PokemonListTitle } from "../PokemonListPage/pokemonListPageStyle";
+import { Modal, PokemonList, PokemonListContainer, PokemonListTitle } from "../PokemonListPage/pokemonListPageStyle";
 import PokemonCard from "../../components/PokemonCard/PokemonCard";
 
-export default function PokedexPage() {
-    const params = useParams()
-    console.log(params);
+export default function PokedexPage({pokedex}) {    
+
     return (
         <PokemonList>
-        <Header />
+        <Header currentPage='pokedex' />
         <PokemonListTitle>
             <h1>Meus Pokemons</h1>
-
         </PokemonListTitle>
         <PokemonListContainer>
+            {pokedex.map((pokemon, index) => {
+                return <PokemonCard key={index} pokemon={pokemon} currentPage='pokedex'/>
+            })}
                  
         </PokemonListContainer>
     
