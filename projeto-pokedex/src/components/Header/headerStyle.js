@@ -52,4 +52,15 @@ export const DeleteButton = styled.button`
         color: var(--light-text-color);
         cursor: pointer;
 
-`
+` 
+export const AddButton = styled.button`
+        grid-column: 3;
+        width: 200px;
+        height: 50px;
+        background-color: var(--button-background-color);
+        border: none;
+        border-radius: 8px;
+        color: var(--light-text-color);
+        cursor: pointer;
+
+` 

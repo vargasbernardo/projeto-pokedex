@@ -124,7 +124,7 @@ export default function PokemonDetailPage() {
 
   return (
     <PokemonDetailPageStyle>
-      <Header currentPage='details'  />
+      <Header currentPage='details' pokemonId={params.id}  />
       <PokemonDetailTitle> Detalhes</PokemonDetailTitle>
       {detailCard}
 
