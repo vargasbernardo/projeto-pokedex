@@ -17,14 +17,18 @@ import addLeadingZero from "../../utils/addLeadingZero";
 import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import { Modal } from "../../pages/PokemonListPage/pokemonListPageStyle";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { useContext } from "react";
+import GlobalContext from "../../context/GlobalContext";
 
 export default function PokemonCard({
   pokemon,
-  handleClick,
   currentPage,
   setIsModalOpen,
-  index
+  index,
 }) {
+  const context = useContext(GlobalContext)
+  console.log(context);  
+  
   return (
     <PokemonCards
       style={{ backgroundColor: getCardBackground(pokemon.types[0].type.name) }}
@@ -56,14 +60,14 @@ export default function PokemonCard({
         {currentPage === "pokemonList" ? (
           <CaptureButton
             onClick={() => {
-              handleClick(pokemon.id, index);
+              context.addToPokedex(pokemon.id, index);
               setIsModalOpen(true); //
             }}
           >
             Capturar!
           </CaptureButton>
         ) : currentPage === "pokedex" ? (
-          <ExcludeButton onClick={() => setIsModalOpen(true)}>Excluir</ExcludeButton>
+          <ExcludeButton onClick={() => context.removeFromPokedex(pokemon.id, index)}>Excluir</ExcludeButton>
         ) : null}
       </ImageContainer>
       <Pokeball src={pokeball} />

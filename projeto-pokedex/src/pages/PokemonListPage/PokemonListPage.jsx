@@ -1,22 +1,25 @@
 import PokemonCard from "../../components/PokemonCard/PokemonCard"
 import { PokemonList, PokemonListContainer, PokemonListTitle, Modal } from "./pokemonListPageStyle"
 import Header from "../../components/Header/Header"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import {AiOutlineCloseCircle} from 'react-icons/ai'
+import GlobalContext from "../../context/GlobalContext"
 
-export default function PokemonListPage({pokemons, handleClick, pokedex}) {
+export default function PokemonListPage() {
+    const context = useContext(GlobalContext)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    console.log(context.pokemons);
     
     return (
         <PokemonList>
-            <Header currentPage='pokemonList'/>
+            <Header currentPage='pokemonList' />
             <PokemonListTitle>
                 <h1>Todos os Pokemons</h1>
 
             </PokemonListTitle>
             <PokemonListContainer>
-                {pokemons.map((pokemon, index) => {
-                    return <PokemonCard key={index} index={index} pokemon={pokemon} handleClick={handleClick} currentPage='pokemonList' setIsModalOpen={setIsModalOpen} />
+                {context.pokemons.map((pokemon, index) => {
+                    return <PokemonCard key={index} index={index} pokemon={pokemon} currentPage='pokemonList' setIsModalOpen={setIsModalOpen}/>
                 })}     
             </PokemonListContainer>
                 {isModalOpen ? <Modal>
