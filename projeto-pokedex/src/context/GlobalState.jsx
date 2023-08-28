@@ -9,6 +9,8 @@ import axios from "axios"
 export default function GlobalState(props) {
     const [pokemons, setPokemons] = useState([])
     const [pokedex, setPokedex] = useState(getLocalStorage() || [])
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isExcludedModalOpen, setIsExcludedModalOpen] = useState(false)
 
     useEffect(() => {
         fetchPokemons()
@@ -36,25 +38,25 @@ export default function GlobalState(props) {
 
     
     async function addToPokedex(id, index) {
-        try {
-            const res = await axios.get(`${BASE_URL}/${id}`)
-            setPokedex([...pokedex, res.data]);
-            setPokemons(prevPokemons => {
-              const newPokemons = [...prevPokemons];
-              newPokemons.splice(index, 1); 
-              return newPokemons;
-            });
-            localStorage.setItem('pokes', JSON.stringify([...pokedex, res.data]));
-        } catch (error) {
-            console.log(error);
-        }
-    }
+      try {
+          const res = await axios.get(`${BASE_URL}/${id}`)
+          setPokedex([...pokedex, res.data]);
+          setPokemons(prevPokemons => {
+            const newPokemons = [...prevPokemons];
+            newPokemons.splice(index, 1); 
+            return newPokemons;
+          });
+          localStorage.setItem('pokes', JSON.stringify([...pokedex, res.data]));
+          setIsModalOpen(true)
+      } catch (error) {
+          console.log(error);
+      }
+  }
     function getLocalStorage() {
         try {
           const storedData = localStorage.getItem('pokes');
           if (storedData) {
             const parsedData = JSON.parse(storedData);
-            console.log(parsedData);
             return parsedData;
           } else {
             console.log("No data found in local storage.");
@@ -66,32 +68,27 @@ export default function GlobalState(props) {
         }
       }
 
-      async function removeFromPokedex(id, index) {
+      async function removeFromPokedex(id) {
         try {
-            // Remove the Pokémon from the pokedex state
             setPokedex(prevPokedex => prevPokedex.filter(pokemon => pokemon.id !== id));
-            
-            // Add the removed Pokémon back to the list of available pokemons
             setPokemons(prevPokemons => {
               const newPokemons = [...prevPokemons];
-              newPokemons.splice(index, 0, pokedex.find(pokemon => pokemon.id === id)); // Insert the removed pokemon at the original index
+              newPokemons.unshift(pokedex.find(pokemon => pokemon.id === id)); 
               return newPokemons;
           });
-              
-              // Update the localStorage to reflect the changes in the pokedex
-            const storedPokes = JSON.parse(localStorage.getItem('pokes'));
+                    const storedPokes = JSON.parse(localStorage.getItem('pokes'));
             if (storedPokes) {
                 const updatedStoredPokes = storedPokes.filter(pokemon => pokemon.id !== id);
                 localStorage.setItem('pokes', JSON.stringify(updatedStoredPokes));
             }
+            setIsExcludedModalOpen(true)
         } catch (error) {
             console.log(error);
         }
     }
 
-
     return (
-        <GlobalContext.Provider value={{pokemons, addToPokedex, pokedex, removeFromPokedex}}>
+        <GlobalContext.Provider value={{pokemons, addToPokedex, pokedex, setIsModalOpen, isModalOpen, removeFromPokedex, isExcludedModalOpen, setIsExcludedModalOpen}}>
             {props.children}
         </GlobalContext.Provider>
     )

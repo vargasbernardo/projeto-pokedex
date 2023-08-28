@@ -29,6 +29,7 @@ import Header from "../../components/Header/Header";
 import getPowerBar from "../../utils/getPowerBar";
 import getStatName from "../../utils/getStatName";
 
+
 export default function PokemonDetailPage() {
   const [pokemonDetail, setPokemonDetail] = useState([]);
   const params = useParams();

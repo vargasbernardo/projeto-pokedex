@@ -8,17 +8,18 @@ import pokemonLogo from "../../assets/images/pokemon-logo.png";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import GlobalContext from "../../context/GlobalContext";
+import { Modal } from "../../pages/PokemonListPage/pokemonListPageStyle";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const Header = ({ currentPage, pokemonId }) => {
   const [showPokedexButton, setShowPokedexButton] = useState(true);
-  const { removeFromPokedex, pokedex, addToPokedex, pokemons } =
+  const {  pokedex, addToPokedex, removeFromPokedex, pokemons, isModalOpen, setIsModalOpen, isExcludedModalOpen, setIsExcludedModalOpen } =
     useContext(GlobalContext);
-  console.log(pokedex);
-  const isPokeOnPokedex = pokedex.some(
+    const isPokeOnPokedex = pokedex.some(
     (pokemon) => pokemon.id === Number(pokemonId)
   );
   const pokeIndex = pokemons.findIndex(
-    (pokemon) => pokemon.id === Number(pokemonId)
+  (pokemon) => pokemon.id === Number(pokemonId)
   );
 
   const handlePokedexButtonClick = () => {
@@ -49,7 +50,7 @@ const Header = ({ currentPage, pokemonId }) => {
           <img src={pokemonLogo} alt="Pokemon Logo" />
           {isPokeOnPokedex ? (
             <DeleteButton
-              onClick={() => removeFromPokedex(pokemonId, pokeIndex)}
+              onClick={() => removeFromPokedex(Number(pokemonId))}
             >
               Excluir da Pokedex
             </DeleteButton>
@@ -60,6 +61,17 @@ const Header = ({ currentPage, pokemonId }) => {
           )}
         </HeaderContainer>
       )}
+      {isModalOpen ? <Modal>
+                    <AiOutlineCloseCircle onClick={() => setIsModalOpen(false)}/>
+                    <h1>Gotcha!</h1>
+                    <h3>O pokemon foi adicionado a sua Pokedex!</h3>
+                </Modal> : null}
+                {isExcludedModalOpen ? <Modal>
+                    <AiOutlineCloseCircle onClick={() => setIsExcludedModalOpen(false)}/>
+                    <h1>Oh, no!</h1>
+                    <h3>O pokemon foi removido da sua Pokedex!</h3>
+                </Modal> : null}
+
     </>
   );
 };

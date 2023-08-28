@@ -23,11 +23,9 @@ import GlobalContext from "../../context/GlobalContext";
 export default function PokemonCard({
   pokemon,
   currentPage,
-  setIsModalOpen,
   index,
 }) {
-  const context = useContext(GlobalContext)
-  console.log(context);  
+  const context = useContext(GlobalContext) 
   
   return (
     <PokemonCards
@@ -61,13 +59,12 @@ export default function PokemonCard({
           <CaptureButton
             onClick={() => {
               context.addToPokedex(pokemon.id, index);
-              setIsModalOpen(true); //
             }}
           >
             Capturar!
           </CaptureButton>
         ) : currentPage === "pokedex" ? (
-          <ExcludeButton onClick={() => context.removeFromPokedex(pokemon.id, index)}>Excluir</ExcludeButton>
+          <ExcludeButton onClick={() => context.removeFromPokedex(pokemon.id)}>Excluir</ExcludeButton>
         ) : null}
       </ImageContainer>
       <Pokeball src={pokeball} />
