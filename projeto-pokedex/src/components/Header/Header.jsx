@@ -13,7 +13,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const Header = ({ currentPage, pokemonId }) => {
   const [showPokedexButton, setShowPokedexButton] = useState(true);
-  const {  pokedex, addToPokedex, removeFromPokedex, pokemons, isModalOpen, setIsModalOpen, isExcludedModalOpen, setIsopenExcludedModalOpen } =
+  const {  pokedex, addToPokedex, removeFromPokedex, pokemons, isModalOpen, setIsModalOpen, isExcludedModalOpen, setIsExcludedModalOpen } =
     useContext(GlobalContext);
     const isPokeOnPokedex = pokedex.some(
     (pokemon) => pokemon.id === Number(pokemonId)
